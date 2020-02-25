@@ -9,14 +9,13 @@ def get_unseen_emails(email_address, password):
         email_address (string): recipient email
         password (password): recipient password
     """
-    with IMAP4_SSL("imap.xs4all.nl") as mail_connection:
+    with IMAP4_SSL("sample.imap.server.com") as mail_connection:
         mail_connection.login(email_address, password)
         print('connected')
         mail_connection.list()
         mail_connection.select('INBOX')
         (retcode, messages) = mail_connection.search(
             None, '(OR (UNSEEN) (FROM your.email@gmail.com))')
-        print('======+>', retcode, messages)
         if retcode == 'OK' and messages[0]:
             for index, num in enumerate(messages[0].split()):
                 typ, data = mail_connection.fetch(num, '(RFC822)')

@@ -11,7 +11,6 @@ def get_unseen_emails(email_address, password):
     """
     with IMAP4_SSL("sample.imap.server.com") as mail_connection:
         mail_connection.login(email_address, password)
-        print('connected')
         mail_connection.list()
         mail_connection.select('INBOX')
         (retcode, messages) = mail_connection.search(

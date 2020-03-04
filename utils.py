@@ -1,4 +1,4 @@
-import os
+from os import getenv
 from dotenv import load_dotenv
 
 
@@ -12,8 +12,8 @@ def read_credentails():
     """
     load_dotenv()
 
-    USER_EMAIL = os.getenv("USER_EMAIL")
-    USER_PASSWORD = os.getenv("USER_PASSWORD")
+    USER_EMAIL = getenv("USER_EMAIL")
+    USER_PASSWORD = getenv("USER_PASSWORD")
     if USER_EMAIL and USER_PASSWORD:
         return USER_EMAIL, USER_PASSWORD
     else:

@@ -41,4 +41,4 @@ def get_mail_attachments(message, condition_check):
             continue
         file_name = part.get_filename()
         if condition_check(file_name):
-            return part.get_filename(), part.get_payload(decode=1)
+            yield part.get_filename(), part.get_payload(decode=1)

@@ -11,5 +11,5 @@ if __name__ == "__main__":
                                                lambda x: x.endswith('.xml'))
             for attachment in attachments:
                 if attachment:
-                    with open('./data/xml_files/{}'.format(attachment[0]), 'wb') as file:
+                    with open('./data/{}'.format(attachment[0]), 'wb') as file:
                         file.write(attachment[1])

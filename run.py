@@ -7,8 +7,9 @@ if __name__ == "__main__":
     messages = get_unseen_emails(email_address, password)
     if messages:
         for message in messages:
-            attachment = get_mail_attachments(message,
-                                              lambda x: x.endswith('.xml'))
-            if attachment:
-                with open('./data/{}'.format(attachment[0]), 'wb') as file:
-                    file.write(attachment[1])
+            attachments = get_mail_attachments(message,
+                                               lambda x: x.endswith('.xml'))
+            for attachment in attachments:
+                if attachment:
+                    with open('./data/xml_files/{}'.format(attachment[0]), 'wb') as file:
+                        file.write(attachment[1])
